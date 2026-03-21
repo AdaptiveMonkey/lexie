@@ -731,7 +731,7 @@ function track(res) {
 
 <!-- ═══ 7. CHELSEA ═══ -->
 <div class="card" style="grid-column:10/13;grid-row:9/10;display:flex;align-items:center;justify-content:flex-end;padding:8px 14px;">
-  <span class="m" style="font-weight:700;font-size:12px;letter-spacing:0.06em;">CHELSEA</span>
+  <span class="m" style="font-weight:700;font-size:12px;letter-spacing:0.06em;">AUTONOMOUS</span>
 </div>
 
 <!-- ═══ 8. EX LIBRIS ═══ -->
@@ -782,24 +782,32 @@ function track(res) {
 
 </div>
 
-<!-- ═══ 9. PIGMA MB ═══ -->
-<div class="card gy" style="grid-column:3/9;grid-row:12/13;display:flex;align-items:center;justify-content:space-between;padding:6px 14px;">
-  <div style="display:flex;align-items:baseline;gap:5px;">
-    <span class="d" style="font-weight:900;font-size:24px;">PIGMA</span><span style="font-size:7px;vertical-align:super;">TM</span>
-    <span class="d" style="font-weight:300;font-size:24px;margin-left:3px;">MB</span>
+<!-- ═══ 9. BEHAVIORAL SCIENCE ═══ -->
+<div class="card gy expandable detail-below modal-on-mobile" style="grid-column:3/9;grid-row:12/13;display:flex;flex-direction:column;justify-content:center;padding:6px 14px;">
+  <!-- POSTER LAYER -->
+  <div class="card-poster" style="display:flex;align-items:center;justify-content:center;height:100%;gap:8px;text-align:center;padding:0 10px;flex-wrap:wrap;">
+    <span class="d" style="font-weight:900;font-size:16px;white-space:nowrap;">Behavioral Science</span>
+    <span class="d" style="font-weight:300;font-size:16px;">× Marketing</span>
   </div>
-  <div class="mic" style="opacity:0.4;">SAKURA&ensp;JAPAN/JAPON/JAPÓN</div>
-  <div style="background:#000;color:#fff;padding:3px 12px;border-radius:20px;font-family:'PM';font-weight:700;font-size:9px;">medium brush</div>
+  <!-- DETAIL LAYER (desktop hover + mobile modal) -->
+  <div class="card-detail" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:260px;background:var(--accent2);padding:0 20px;">
+    <div class="t" style="font-weight:400;font-size:14px;color:#000;">In the age of data,</div>
+    <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;justify-content:center;">
+      <span class="d" style="font-weight:900;font-size:26px;background:#000;color:#fff;padding:2px 10px;border-radius:4px;">desire</span>
+      <span class="t" style="font-weight:400;font-size:18px;color:#000;">has a</span>
+      <span class="d" style="font-weight:900;font-size:26px;background:#000;color:#fff;padding:2px 10px;border-radius:4px;">formula</span><span class="d" style="font-weight:300;font-size:26px;color:#000;">.</span>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ 10. Perf ═══ -->
 <div class="card bk" style="grid-column:9/11;grid-row:12/13;display:flex;align-items:center;justify-content:center;">
-  <div class="d" style="font-weight:700;font-size:26px;font-style:italic;">Perf</div>
+  <div class="d" style="font-weight:700;font-size:26px;font-style:italic;">Nudge</div>
 </div>
 
 <!-- ═══ 11. izakaya ═══ -->
 <div class="card" style="grid-column:10/13;grid-row:10/12;display:flex;align-items:center;padding:6px 14px;">
-  <span class="m" style="font-weight:400;font-size:16px;letter-spacing:0.12em;">izakaya</span>
+  <span class="m" style="font-weight:400;font-size:16px;letter-spacing:0.12em;">Embedded AI</span>
 </div>
 
 <!-- ═══ 12. SAN JOSÉ DAY ═══ -->
@@ -1050,6 +1058,21 @@ function track(res) {
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', function(e){
       if(!mq.matches) return;
+      // modal-on-mobile: open as square modal instead of toggle
+      if(this.classList.contains('modal-on-mobile')){
+        e.stopPropagation();
+        var detail = this.querySelector('.card-detail');
+        if(detail){
+          var content = detail.cloneNode(true);
+          content.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:0;background:var(--accent2);padding:30px 20px;aspect-ratio:1;border-radius:14px;opacity:1;max-height:none;position:relative;';
+          modalCard.innerHTML = '';
+          modalCard.appendChild(content);
+          modal.style.display = 'flex';
+          requestAnimationFrame(function(){ modal.classList.add('open'); });
+          document.body.style.overflow = 'hidden';
+        }
+        return;
+      }
       // expandable cards: toggle open/close on tap
       if(this.classList.contains('expandable')){
         e.stopPropagation();
