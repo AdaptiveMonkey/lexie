@@ -638,7 +638,7 @@ function track(res) {
 <!-- ═══ SPACING ROW — grid shows through ═══ -->
 
 <!-- ═══ 5. GLITCH DUNGEON PIXEL ART ═══ -->
-<div class="card bk" style="grid-column:1/4;grid-row:9/11;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+<div id="pixelCard" class="card bk" style="grid-column:1/4;grid-row:9/11;display:flex;align-items:center;justify-content:center;overflow:hidden;">
   <canvas id="pixelDuo" style="display:block;image-rendering:pixelated;image-rendering:crisp-edges;width:100%;height:100%;object-fit:contain;"></canvas>
   <script>
   (function(){
@@ -995,6 +995,14 @@ function track(res) {
       clone.style.backdropFilter = 'blur(20px)';
       clone.style.webkitBackdropFilter = 'blur(20px)';
       clone.style.border = '1px solid rgba(255,255,255,0.2)';
+    }
+    // Copy canvas pixel data (cloneNode doesn't copy canvas content)
+    var origCanvases = card.querySelectorAll('canvas');
+    var cloneCanvases = clone.querySelectorAll('canvas');
+    for(var i=0;i<origCanvases.length;i++){
+      var oc=origCanvases[i], cc=cloneCanvases[i];
+      cc.width=oc.width; cc.height=oc.height;
+      cc.getContext('2d').drawImage(oc,0,0);
     }
     modalCard.innerHTML = '';
     modalCard.appendChild(clone);
