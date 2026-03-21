@@ -324,6 +324,8 @@
     /* globe card on tablet — collapsed: small preview; expanded: full globe */
     #globeCard{
       overflow:hidden!important;
+      flex-direction:column!important;
+      gap:8px;
       transition:height 0.4s ease;
     }
     #globeCard .globe-wrap{
@@ -335,23 +337,24 @@
       transition:width 0.4s ease, height 0.4s ease;
     }
     #globeCard .text-ring{
-      display:none;
-      transition:opacity 0.3s ease;
+      display:none!important;
+    }
+    #globeCard .globe-label{
+      display:none!important;
     }
     /* expanded state */
     #globeCard.globe-open{
-      height:280px!important;
+      height:320px!important;
       z-index:200;
     }
+    #globeCard.globe-open .globe-label{
+      display:block!important;
+    }
     #globeCard.globe-open .globe-wrap{
-      width:190px!important;height:190px!important;
+      width:200px!important;height:200px!important;
     }
     #globeCard.globe-open canvas{
-      width:190px!important;height:190px!important;
-    }
-    #globeCard.globe-open .text-ring{
-      display:block;
-      inset:-24px;
+      width:200px!important;height:200px!important;
     }
   }
 
@@ -425,16 +428,16 @@
     }
     /* globe card on phone — inherits tablet rules above */
     #globeCard.globe-open{
-      height:300px!important;
+      height:320px!important;
       margin-left:0!important;margin-right:0!important;
       transform:none!important;
       margin-bottom:8px;
     }
     #globeCard.globe-open .globe-wrap{
-      width:200px!important;height:200px!important;
+      width:210px!important;height:210px!important;
     }
     #globeCard.globe-open canvas{
-      width:200px!important;height:200px!important;
+      width:210px!important;height:210px!important;
     }
     /* footer: no card styling on mobile */
     #footer{
@@ -1010,6 +1013,7 @@ function track(res) {
 
 <!-- ═══ 17. GLOBE ═══ -->
 <div id="globeCard" class="card" style="grid-column:5/9;grid-row:25/30;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;background:#000;position:relative;">
+  <div class="globe-label" style="display:none;color:#fff;font-family:system-ui,sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;opacity:0.5;">5 CITIES · 3 CONTINENTS</div>
   <div class="globe-wrap" style="position:relative;width:200px;height:200px;touch-action:none;">
     <svg class="text-ring" viewBox="0 0 300 300" style="position:absolute;inset:-25px;pointer-events:none;">
       <defs><path id="circlePath" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/></defs>
