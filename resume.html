@@ -220,6 +220,20 @@
     transform:translateX(0);
     pointer-events:auto;
   }
+  /* variant: detail slides down below the card */
+  .card.expandable.detail-below .card-detail{
+    top:100%; left:0;
+    width:100%; height:auto;
+    min-height:180px;
+    border-left:none;
+    border-top:3px solid #000;
+    border-radius:0 0 14px 14px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    transform:translateY(-12px);
+  }
+  .card.expandable.detail-below:hover .card-detail{
+    transform:translateY(0);
+  }
 
   /* ═══ MODAL OVERLAY ═══ */
   .modal-backdrop{
@@ -545,8 +559,8 @@ function track(res) {
   <!-- DETAIL LAYER (hover view) -->
   <div class="card-detail">
     <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Oct 2025 – Present</div>
-    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">RAKUS</div>
-    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">AI Engineer · Tech Lead</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Rakus</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">AI ENGINEER · TECH LEAD</div>
     <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Japan's #1 SaaS company by ARR. Building company-wide evaluation pipelines for CRM AI agents. Designed accuracy metrics, optimized prompts, set up continuous quality monitoring across multiple product teams.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
       <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">GPT</span>
@@ -659,14 +673,14 @@ function track(res) {
 </div>
 
 <!-- ═══ 6. UNI POSCA ═══ -->
-<div class="card expandable" style="grid-column:4/10;grid-row:9/12;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;border:2.5px solid #000;">
+<div class="card expandable detail-below" style="grid-column:4/10;grid-row:9/12;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;border:2.5px solid #000;">
 
   <!-- POSTER LAYER -->
   <div class="card-poster" style="display:flex;flex-direction:column;height:100%;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
       <div style="display:flex;align-items:baseline;gap:10px;">
-        <span class="m" style="font-weight:700;font-size:16px;">IoT</span>
-        <span class="d" style="font-weight:950;font-size:52px;letter-spacing:0.02em;line-height:0.85;">SOLAR</span>
+        <span class="d" style="font-weight:950;font-size:52px;letter-spacing:0.02em;line-height:0.85;">IoT</span>
+        <span class="m" style="font-weight:700;font-size:16px;">SOLAR</span>
       </div>
       <div class="t" style="text-align:right;font-size:8px;line-height:1.5;font-weight:700;border:1.5px solid #000;padding:3px 7px;">ANOMALY<br>DETECTION<br>REPAIR<br>PREDICT<br>+12% EFF.</div>
     </div>
@@ -715,20 +729,30 @@ function track(res) {
 <div class="card bk expandable" style="grid-column:1/3;grid-row:12/16;display:flex;align-items:center;justify-content:center;">
 
   <!-- POSTER LAYER -->
-  <div class="card-poster" style="display:flex;flex-direction:column;height:100%;align-items:center;justify-content:center;">
-    <div style="text-align:center;">
-      <div class="m" style="font-size:8px;font-weight:300;letter-spacing:0.2em;opacity:0.5;">GAME DATA</div>
-      <svg viewBox="0 0 80 95" width="68" height="80" style="margin:5px auto;">
-        <ellipse cx="40" cy="40" rx="30" ry="32" fill="#fff"/>
-        <circle cx="29" cy="34" r="11" fill="#000"/><circle cx="51" cy="34" r="11" fill="#000"/>
-        <circle cx="29" cy="34" r="5.5" fill="#fff"/><circle cx="51" cy="34" r="5.5" fill="#fff"/>
-        <circle cx="29" cy="34" r="2.8" fill="#000"/><circle cx="51" cy="34" r="2.8" fill="#000"/>
-        <polygon points="40,40 36,47 44,47" fill="#000"/>
-        <polygon points="16,14 27,30 12,30" fill="#fff"/><polygon points="64,14 53,30 68,30" fill="#fff"/>
-        <path d="M10,52 Q20,43 30,58 Q20,63 10,52Z" fill="#fff"/><path d="M70,52 Q60,43 50,58 Q60,63 70,52Z" fill="#fff"/>
-        <line x1="31" y1="70" x2="27" y2="82" stroke="#fff" stroke-width="2.8"/><line x1="40" y1="72" x2="40" y2="84" stroke="#fff" stroke-width="2.8"/><line x1="49" y1="70" x2="53" y2="82" stroke="#fff" stroke-width="2.8"/>
+  <div class="card-poster" style="display:flex;flex-direction:column;height:100%;align-items:center;justify-content:center;padding:0 20px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="d" style="font-weight:950;font-size:28px;letter-spacing:0.02em;line-height:0.9;white-space:nowrap;">GAME<br>DATA</div>
+      <svg viewBox="0 0 140 90" width="70" height="45">
+        <!-- gamepad: thick outline, white fill, black stroke -->
+        <!-- main body -->
+        <path d="M30,18 Q38,8 55,12 Q65,6 75,6 Q85,6 95,12 Q112,8 120,18 Q130,28 126,52 Q124,68 116,76 Q108,84 100,72 Q94,62 85,58 Q75,56 65,56 Q55,56 45,58 Q36,62 30,72 Q22,84 14,76 Q6,68 4,52 Q0,28 30,18 Z" fill="#fff" stroke="#000" stroke-width="5"/>
+        <!-- d-pad (left) -->
+        <rect x="28" y="28" width="7" height="22" rx="1.5" fill="#000"/>
+        <rect x="22" y="34" width="20" height="7" rx="1.5" fill="#000"/>
+        <!-- center buttons -->
+        <rect x="56" y="36" width="7" height="5" rx="2" fill="#000"/>
+        <rect x="67" y="36" width="7" height="5" rx="2" fill="#000"/>
+        <!-- right buttons (diamond pattern) -->
+        <circle cx="98" cy="30" r="3.2" fill="#000"/>
+        <circle cx="91" cy="37" r="3.2" fill="#000"/>
+        <circle cx="105" cy="37" r="3.2" fill="#000"/>
+        <circle cx="98" cy="44" r="3.2" fill="#000"/>
+        <!-- analog sticks -->
+        <circle cx="42" cy="52" r="7.5" fill="#000"/>
+        <circle cx="42" cy="52" r="3" fill="#fff"/>
+        <circle cx="88" cy="52" r="7.5" fill="#000"/>
+        <circle cx="88" cy="52" r="3" fill="#fff"/>
       </svg>
-      <div class="d" style="font-weight:900;font-size:15px;letter-spacing:0.04em;">YOKOZUNA<br>DATA</div>
     </div>
   </div>
 
