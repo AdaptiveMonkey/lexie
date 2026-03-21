@@ -50,6 +50,52 @@
     position:relative;
   }
 
+  /* ═══ ASCII SCROLL ANIMATION ═══ */
+  @keyframes ascii-drift{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-50%);}
+  }
+  .ascii-scroll{
+    animation:ascii-drift 18s linear infinite;
+  }
+  /* ASCII text-filled letters: scrolling white keywords inside letter shapes */
+  .ascii-letter{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='240'%3E%3Crect width='360' height='240' fill='%231a1a1a'/%3E%3Ctext fill='%23fff' font-family='monospace' font-size='9.5' letter-spacing='0.5'%3E%3Ctspan x='2' y='9'%3EGPT Claude Gemini eval agents RAG%3C/tspan%3E%3Ctspan x='2' y='18'%3ELangGraph prompt CRM quality pipe%3C/tspan%3E%3Ctspan x='2' y='27'%3ELLM feedback accuracy metrics SaaS%3C/tspan%3E%3Ctspan x='2' y='36'%3Edeploy monitor tune iterate ship%3C/tspan%3E%3Ctspan x='2' y='45'%3Eprod API model fine-tune tokens%3C/tspan%3E%3Ctspan x='2' y='54'%3Eembed vector cosine retrieval ch%3C/tspan%3E%3Ctspan x='2' y='63'%3Etools function-call streaming bat%3C/tspan%3E%3Ctspan x='2' y='72'%3Easync webhook dashboard KPI churn%3C/tspan%3E%3Ctspan x='2' y='81'%3ENPS latency throughput p99 SLA up%3C/tspan%3E%3Ctspan x='2' y='90'%3Ecanary rollout Docker K8s AWS S3%3C/tspan%3E%3Ctspan x='2' y='99'%3EFastAPI Next.js React TypeScript%3C/tspan%3E%3Ctspan x='2' y='108'%3EPyTorch transformers attention RL%3C/tspan%3E%3Ctspan x='2' y='117'%3Eencoder decoder tokenizer infer%3C/tspan%3E%3Ctspan x='2' y='126'%3EGPT Claude Gemini eval agents RAG%3C/tspan%3E%3Ctspan x='2' y='135'%3ELangGraph prompt CRM quality pipe%3C/tspan%3E%3Ctspan x='2' y='144'%3ELLM feedback accuracy metrics SaaS%3C/tspan%3E%3Ctspan x='2' y='153'%3Edeploy monitor tune iterate ship%3C/tspan%3E%3Ctspan x='2' y='162'%3Eprod API model fine-tune tokens%3C/tspan%3E%3Ctspan x='2' y='171'%3Eembed vector cosine retrieval ch%3C/tspan%3E%3Ctspan x='2' y='180'%3Etools function-call streaming bat%3C/tspan%3E%3Ctspan x='2' y='189'%3Easync webhook dashboard KPI churn%3C/tspan%3E%3Ctspan x='2' y='198'%3ENPS latency throughput p99 SLA up%3C/tspan%3E%3Ctspan x='2' y='207'%3Ecanary rollout Docker K8s AWS S3%3C/tspan%3E%3Ctspan x='2' y='216'%3EFastAPI Next.js React TypeScript%3C/tspan%3E%3Ctspan x='2' y='225'%3EPyTorch transformers attention RL%3C/tspan%3E%3Ctspan x='2' y='234'%3Eencoder decoder tokenizer infer%3C/tspan%3E%3C/text%3E%3C/svg%3E");
+    background-size:360px 240px;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+    animation:ascii-bg-scroll 3s linear infinite;
+  }
+  @keyframes ascii-bg-scroll{
+    0%{background-position:0 0;}
+    100%{background-position:0 -120px;}
+  }
+  /* code rain: 3 scrolling columns behind SA/AS */
+  .code-rain{
+    position:absolute;inset:0;overflow:hidden;
+    display:flex;gap:0;
+  }
+  .code-rain .col{
+    flex:1;
+    white-space:pre;
+    font-family:monospace;font-size:7.5px;line-height:1.4;
+    color:rgba(180,180,180,0.55);
+    overflow:hidden;
+    padding:4px 3px;
+  }
+  .code-rain .col .scroll{
+    animation:rain-up linear infinite;
+  }
+  .code-rain .col:nth-child(1) .scroll{animation-duration:25s;}
+  .code-rain .col:nth-child(2) .scroll{animation-duration:20s;animation-delay:-7s;}
+  .code-rain .col:nth-child(3) .scroll{animation-duration:28s;animation-delay:-14s;}
+  @keyframes rain-up{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-50%);}
+  }
+
   .d{font-family:'PD',sans-serif;}
   .m{font-family:'PM',sans-serif;}
   .t{font-family:'PT',sans-serif;}
@@ -314,23 +360,145 @@
   <!-- POSTER LAYER (default view) -->
   <div class="card-poster" style="display:flex;flex-direction:column;height:100%;">
     <div style="padding:14px 14px 6px;display:flex;justify-content:space-between;align-items:flex-start;">
-      <div class="d" style="font-weight:900;font-size:54px;letter-spacing:-0.03em;line-height:0.85;">SaaS</div>
-      <div class="t" style="text-align:right;font-size:11.5px;line-height:1.8;opacity:0.7;">agents<br>eval<br>quality &amp; scale</div>
+      <div class="d" style="font-weight:400;font-size:64px;letter-spacing:-0.03em;line-height:0.85;">Agent</div>
+      <div class="t" style="text-align:left;font-size:11.5px;line-height:1.8;opacity:0.7;">agents<br>eval<br>quality &amp; scale</div>
     </div>
-    <div style="flex:1;display:flex;gap:0;margin:0 14px;">
-      <div style="flex:1;background:#000;display:flex;align-items:center;justify-content:center;">
-        <svg viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-          <rect width="100" height="100" fill="#000"/>
-          <line x1="50" y1="2" x2="50" y2="98" stroke="#fff" stroke-width="12"/>
-          <line x1="2" y1="50" x2="98" y2="50" stroke="#fff" stroke-width="12"/>
-          <line x1="10" y1="10" x2="90" y2="90" stroke="#fff" stroke-width="8"/>
-          <line x1="90" y1="10" x2="10" y2="90" stroke="#fff" stroke-width="8"/>
-          <line x1="50" y1="2" x2="50" y2="98" stroke="#000" stroke-width="3"/>
-          <line x1="2" y1="50" x2="98" y2="50" stroke="#000" stroke-width="3"/>
-        </svg>
+    <div style="flex:1;margin:0 14px;background:#1a1a1a;border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+      <!-- code generation rain -->
+      <div class="code-rain">
+        <div class="col"><div class="scroll">def eval_agent(prompt):
+  res = llm.generate(prompt)
+  score = evaluate(res)
+  if score &lt; 0.85:
+    prompt = optimize(prompt)
+    return eval_agent(prompt)
+  return {"score": score}
+
+class CRMAgent:
+  def __init__(self, cfg):
+    self.llm = load(cfg)
+    self.tools = [search]
+
+  async def run(self, q):
+    plan = self.llm.plan(q)
+    for step in plan:
+      r = await step.exec()
+      yield r
+
+pipeline.add("eval")
+pipeline.add("monitor")
+pipeline.deploy("prod")
+
+for batch in stream:
+  m = compute(batch)
+  if m.drift > threshold:
+    alert("ai-quality")
+    retrain(model, batch)
+def eval_agent(prompt):
+  res = llm.generate(prompt)
+  score = evaluate(res)
+  if score &lt; 0.85:
+    prompt = optimize(prompt)
+    return eval_agent(prompt)
+  return {"score": score}
+
+class CRMAgent:
+  def __init__(self, cfg):
+    self.llm = load(cfg)
+    self.tools = [search]
+</div></div>
+        <div class="col"><div class="scroll">import torch
+from langchain import Agent
+
+def sentiment(text):
+  tok = tokenize(text)
+  out = model(tok)
+  return softmax(out)
+
+@app.post("/api/eval")
+async def evaluate(req):
+  agent = Agent(llm=claude)
+  result = agent.invoke(req)
+  log_metrics(result)
+  return result.json()
+
+retriever = VectorStore(
+  embed=embed_model,
+  index="crm-docs"
+)
+
+chain = (
+  retriever
+  | format_ctx
+  | llm.generate
+  | parse_output
+)
+
+r = chain.invoke(
+  "eval agent quality"
+)
+print(f"score: {r}")
+import torch
+from langchain import Agent
+
+def sentiment(text):
+  tok = tokenize(text)
+  out = model(tok)
+  return softmax(out)
+
+@app.post("/api/eval")
+async def evaluate(req):
+  agent = Agent(llm=claude)
+</div></div>
+        <div class="col"><div class="scroll">const deploy = async () =>{
+  const b = await run("test")
+  if (b.pass) {
+    await push("prod")
+    monitor.start()
+  }
+}
+
+function track(res) {
+  const acc = res.score
+  const lat = res.time_ms
+  dash.update({
+    accuracy: acc,
+    latency: lat,
+    ts: Date.now()
+  })
+}
+
+class EvalPipeline {
+  constructor(models) {
+    this.models = models
+    this.rubric = load()
+  }
+
+  async evaluate(out) {
+    const s = await
+      Promise.all(
+        this.rubric.criteria
+          .map(c => score(out,c))
+      )
+    return aggregate(s)
+  }
+}
+const deploy = async () =>{
+  const b = await run("test")
+  if (b.pass) {
+    await push("prod")
+    monitor.start()
+  }
+}
+
+function track(res) {
+  const acc = res.score
+</div></div>
       </div>
-      <div style="flex:1;background:#000;display:flex;align-items:center;justify-content:center;">
-        <div style="width:90%;aspect-ratio:1;border-radius:50%;background:#fff;"></div>
+      <!-- SA/AS letters on top -->
+      <div style="position:relative;z-index:2;">
+        <div class="d ascii-letter" style="font-weight:700;font-size:120px;line-height:0.88;letter-spacing:-0.04em;text-align:center;">SA</div>
+        <div class="d ascii-letter" style="font-weight:700;font-size:120px;line-height:0.88;letter-spacing:-0.04em;text-align:center;">AS</div>
       </div>
     </div>
     <div class="mic" style="opacity:0.3;padding:8px 14px 10px;">building AI evaluation pipelines at Japan's #1 SaaS.<br>making LLMs stop making stuff up, one prompt at a time.</div>
@@ -338,17 +506,17 @@
 
   <!-- DETAIL LAYER (hover view) -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Oct 2025 – Present</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">RAKUS</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;">AI Engineer · Tech Lead</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;">Japan's #1 SaaS company by ARR. Building company-wide evaluation pipelines for CRM AI agents. Designed accuracy metrics, optimized prompts, set up continuous quality monitoring across multiple product teams.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Oct 2025 – Present</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">RAKUS</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">AI Engineer · Tech Lead</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Japan's #1 SaaS company by ARR. Building company-wide evaluation pipelines for CRM AI agents. Designed accuracy metrics, optimized prompts, set up continuous quality monitoring across multiple product teams.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">GPT</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Claude</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Gemini</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Eval Pipelines</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">GPT</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Claude</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Gemini</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Eval Pipelines</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;">CRM AI quality · cross-team impact · feedback loops</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;">CRM AI quality · cross-team impact · feedback loops</div>
   </div>
 
 </div>
@@ -380,18 +548,18 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Mar 2020 – Sep 2025</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">deep data</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;">SENIOR DATA SCIENTIST</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;">Built an LLM-powered customer research agent for investors. Designed the full UX flow from input to insight. Sentiment analysis model beat conventional approach by ~20%. Achieved 80%+ user satisfaction in PoC.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Mar 2020 – Sep 2025</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">deep data</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">SENIOR DATA SCIENTIST</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Built an LLM-powered customer research agent for investors. Designed the full UX flow from input to insight. Sentiment analysis model beat conventional approach by ~20%. Achieved 80%+ user satisfaction in PoC.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">LLM Agents</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">FastAPI</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Next.js</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">PyTorch</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">HF Transformers</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">LLM Agents</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">FastAPI</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Next.js</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">PyTorch</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">HF Transformers</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;">5-person team • full-stack AI • user research → prompt iteration</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;">5-person team • full-stack AI • user research → prompt iteration</div>
   </div>
 
 </div>
@@ -451,18 +619,18 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Jul 2019 – Feb 2020</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Hirasol Energy</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;">CHIEF DATA OFFICER</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;">UTokyo spinoff (Series B, ¥1.3B raised). Built IoT × AI anomaly detection for solar farms from scratch. Proved 12% efficiency improvement at a Kansai power company PoC.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Jul 2019 – Feb 2020</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Hirasol Energy</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">CHIEF DATA OFFICER</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">UTokyo spinoff (Series B, ¥1.3B raised). Built IoT × AI anomaly detection for solar farms from scratch. Proved 12% efficiency improvement at a Kansai power company PoC.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">IoT</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Anomaly Detection</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">PyTorch</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">AWS</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">0→1</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">IoT</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Anomaly Detection</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">PyTorch</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">AWS</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">0→1</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;">solar panels • the sun was pleased</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;">solar panels • the sun was pleased</div>
   </div>
 
 </div>
@@ -495,17 +663,17 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;color:#000;">Mar 2019 – Jul 2019</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;color:#000;">Yokozuna Data</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;color:#000;">DATA SCIENTIST</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;color:#000;">Predicting when gamers rage-quit. Took an IEEE-award-winning churn model and made it work in production. Auto-tuned models, built PySpark pipelines for billions of player actions.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;color:#000;">Mar 2019 – Jul 2019</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;color:#000;">Yokozuna Data</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;color:#000;">DATA SCIENTIST</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;color:#000;">Predicting when gamers rage-quit. Took an IEEE-award-winning churn model and made it work in production. Auto-tuned models, built PySpark pipelines for billions of player actions.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Churn ML</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">PySpark</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">TensorFlow</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">MongoDB</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Churn ML</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">PySpark</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">TensorFlow</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">MongoDB</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;color:#000;">game behavior prediction • IEEE competition winners</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;color:#000;">game behavior prediction • IEEE competition winners</div>
   </div>
 
 </div>
@@ -556,17 +724,17 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;color:#000;">May 2017 – Feb 2019</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;color:#000;">Tohoku Univ.</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;color:#000;">ASSISTANT PROFESSOR</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;color:#000;">Computational materials science. Predicted polymer behavior using simulated annealing and mean-field theory. Co-led international research with UW Seattle. Published 3 papers. Won government grant for polymer × ML platform.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;color:#000;">May 2017 – Feb 2019</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;color:#000;">Tohoku Univ.</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;color:#000;">ASSISTANT PROFESSOR</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;color:#000;">Computational materials science. Predicted polymer behavior using simulated annealing and mean-field theory. Co-led international research with UW Seattle. Published 3 papers. Won government grant for polymer × ML platform.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Polymer ML</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">3 Papers</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Gov Grant</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">UW Collab</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Polymer ML</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">3 Papers</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Gov Grant</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">UW Collab</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;color:#000;">computational materials science • international research</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;color:#000;">computational materials science • international research</div>
   </div>
 
 </div>
@@ -598,17 +766,17 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Apr 2014 – Dec 2015</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Mitsubishi Heavy</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;">PROJECT LEADER · 11 PEOPLE</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;">First-ever neural network combustion model at MHI. Led cross-lab project (fluid dynamics + chemistry + CS). Coordinated with Georgia Tech and UC Berkeley. Applied to power generation, automotive, and aerospace.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Apr 2014 – Dec 2015</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Mitsubishi Heavy</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">PROJECT LEADER · 11 PEOPLE</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">First-ever neural network combustion model at MHI. Led cross-lab project (fluid dynamics + chemistry + CS). Coordinated with Georgia Tech and UC Berkeley. Applied to power generation, automotive, and aerospace.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Neural Networks</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">C++</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Cross-lab</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Georgia Tech</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Neural Networks</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">C++</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Cross-lab</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Georgia Tech</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;">3 research labs united • combustion meets AI</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;">3 research labs united • combustion meets AI</div>
   </div>
 
 </div>
@@ -639,17 +807,17 @@
 
   <!-- DETAIL LAYER -->
   <div class="card-detail">
-    <div class="m" style="font-weight:700;font-size:10px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">2012 – 2022 (Chiba) · 2017 – 2018 (OpenACADEMIA)</div>
-    <div class="d" style="font-weight:900;font-size:30px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Chiba Univ. &amp; OpenACADEMIA</div>
-    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.04em;opacity:0.55;">LECTURER · ACADEMIC ORGANIZER</div>
-    <div class="t" style="font-size:12px;line-height:1.6;margin:14px 0;opacity:0.75;">Taught "New Tech &amp; AI Applications" to engineering students for a decade. Organized cross-disciplinary research sessions at UW Seattle. Co-hosted events with the Japanese Embassy. Won Chiba University President's Award 2014.</div>
+    <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">2012 – 2022 (Chiba) · 2017 – 2018 (OpenACADEMIA)</div>
+    <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">Chiba Univ. &amp; OpenACADEMIA</div>
+    <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">LECTURER · ACADEMIC ORGANIZER</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Taught "New Tech &amp; AI Applications" to engineering students for a decade. Organized cross-disciplinary research sessions at UW Seattle. Co-hosted events with the Japanese Embassy. Won Chiba University President's Award 2014.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">Teaching</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">UW Seattle</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">JP Embassy</span>
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:9px;font-weight:700;border-radius:10px;">President's Award '14</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Teaching</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">UW Seattle</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">JP Embassy</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">President's Award '14</span>
     </div>
-    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:9px;">10 years teaching • academic diplomacy</div>
+    <div class="mic" style="opacity:0.25;margin-top:8px;font-size:10px;">10 years teaching • academic diplomacy</div>
   </div>
 
 </div>
