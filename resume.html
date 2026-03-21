@@ -278,6 +278,7 @@
       position:relative;top:auto;left:auto;
       width:auto;height:auto;
       border-radius:0;box-shadow:none;
+      border-left:none;
       max-height:0;opacity:0;
       padding:0 14px;
       transition:max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
@@ -285,10 +286,22 @@
       transform:none;
       pointer-events:auto;
     }
-    .card.expandable:hover .card-detail{
-      max-height:300px;
+    .card.expandable:hover .card-detail,
+    .card.expandable.open .card-detail{
+      max-height:500px;
       opacity:1;
       padding:12px 14px 14px;
+      border-left:none;
+    }
+    .card.expandable.open{
+      height:auto!important;
+      min-height:0!important;
+      align-self:start;
+      z-index:200;
+      box-shadow:0 12px 40px rgba(0,0,0,0.15);
+    }
+    .card.expandable.open .card-poster{
+      display:flex!important;
     }
     .topnav{padding-left:15px;}
   }
@@ -322,13 +335,20 @@
     .card.expandable .card-poster{
       height:100px;
     }
-    .card.expandable:hover{
+    .card.expandable:hover,
+    .card.expandable.open{
       height:auto!important;
       min-height:0!important;
       align-self:start;
       margin-bottom:8px;
       transform:none!important;
       margin-left:0!important;margin-right:0!important;
+    }
+    .card.expandable.open .card-detail{
+      max-height:500px;
+      opacity:1;
+      padding:12px 14px 14px;
+      border-left:none;
     }
     /* last card needs clearance */
     .card:last-child{margin-bottom:24px;}
