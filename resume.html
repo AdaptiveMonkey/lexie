@@ -348,7 +348,8 @@
     .card:nth-child(4n+3){transform:rotate(-0.4deg);}
     .card:nth-child(4n){transform:rotate(0.9deg);}
     .card:active{transform:scale(0.96) rotate(0deg)!important;}
-    /* slogan circle card: same as other cards */
+    /* starburst smaller on mobile */
+    .card-poster svg[viewBox="0 0 200 200"]{width:40%!important;max-height:120px;}
     /* expandable: poster banner + detail slides down */
     .card.expandable .card-poster{
       height:100px;
@@ -563,22 +564,16 @@ function track(res) {
 
   <!-- POSTER LAYER -->
   <div class="card-poster" style="display:flex;flex-direction:column;height:100%;">
-    <div class="d" style="font-weight:900;font-size:44px;letter-spacing:0.04em;line-height:0.92;">LLM</div>
-    <svg viewBox="0 0 160 130" width="100%" style="margin:4px 0;flex-shrink:0;" preserveAspectRatio="xMidYMid meet">
-      <g fill="#000">
-        <circle cx="8" cy="8" r="7.2"/><circle cx="23" cy="8" r="7.2"/><circle cx="38" cy="8" r="7.2"/><circle cx="53" cy="8" r="7.2"/><circle cx="68" cy="8" r="7.2"/><circle cx="83" cy="8" r="7.2"/><circle cx="98" cy="8" r="7.2"/><circle cx="113" cy="8" r="7.2"/><circle cx="128" cy="8" r="7.2"/><circle cx="143" cy="8" r="7.2"/>
-        <circle cx="15.5" cy="21" r="7.2"/><circle cx="30.5" cy="21" r="7.2"/><circle cx="45.5" cy="21" r="7.2"/><circle cx="60.5" cy="21" r="7.2"/><circle cx="75.5" cy="21" r="7.2"/><circle cx="90.5" cy="21" r="7.2"/><circle cx="105.5" cy="21" r="7.2"/><circle cx="120.5" cy="21" r="7.2"/><circle cx="135.5" cy="21" r="7.2"/>
-        <circle cx="8" cy="34" r="7.2"/><circle cx="23" cy="34" r="7.2"/><circle cx="38" cy="34" r="7.2"/><circle cx="53" cy="34" r="7.2"/><circle cx="68" cy="34" r="7.2"/><circle cx="83" cy="34" r="7.2"/><circle cx="98" cy="34" r="7.2"/><circle cx="113" cy="34" r="7.2"/><circle cx="128" cy="34" r="7.2"/><circle cx="143" cy="34" r="7.2"/>
-        <circle cx="15.5" cy="47" r="7.2"/><circle cx="30.5" cy="47" r="7.2"/><circle cx="45.5" cy="47" r="7.2"/><circle cx="60.5" cy="47" r="7.2"/><circle cx="75.5" cy="47" r="7.2"/><circle cx="90.5" cy="47" r="7.2"/><circle cx="105.5" cy="47" r="7.2"/><circle cx="120.5" cy="47" r="7.2"/><circle cx="135.5" cy="47" r="7.2"/>
-        <circle cx="8" cy="60" r="7.2"/><circle cx="23" cy="60" r="7.2"/><circle cx="38" cy="60" r="7.2"/><circle cx="53" cy="60" r="7.2"/><circle cx="68" cy="60" r="7.2"/><circle cx="83" cy="60" r="7.2"/><circle cx="98" cy="60" r="7.2"/><circle cx="113" cy="60" r="7.2"/><circle cx="128" cy="60" r="7.2"/><circle cx="143" cy="60" r="7.2"/>
-        <circle cx="15.5" cy="73" r="7.2"/><circle cx="30.5" cy="73" r="7.2"/><circle cx="45.5" cy="73" r="7.2"/><circle cx="60.5" cy="73" r="7.2"/><circle cx="75.5" cy="73" r="7.2"/><circle cx="90.5" cy="73" r="7.2"/><circle cx="105.5" cy="73" r="7.2"/><circle cx="120.5" cy="73" r="7.2"/><circle cx="135.5" cy="73" r="7.2"/>
-        <circle cx="8" cy="86" r="7.2"/><circle cx="23" cy="86" r="7.2"/><circle cx="38" cy="86" r="7.2"/><circle cx="53" cy="86" r="7.2"/><circle cx="68" cy="86" r="7.2"/><circle cx="83" cy="86" r="7.2"/><circle cx="98" cy="86" r="7.2"/><circle cx="113" cy="86" r="7.2"/><circle cx="128" cy="86" r="7.2"/><circle cx="143" cy="86" r="7.2"/>
-        <circle cx="15.5" cy="99" r="7.2"/><circle cx="30.5" cy="99" r="7.2"/><circle cx="45.5" cy="99" r="7.2"/><circle cx="60.5" cy="99" r="7.2"/><circle cx="75.5" cy="99" r="7.2"/><circle cx="90.5" cy="99" r="7.2"/><circle cx="105.5" cy="99" r="7.2"/><circle cx="120.5" cy="99" r="7.2"/><circle cx="135.5" cy="99" r="7.2"/>
-        <circle cx="8" cy="112" r="7.2"/><circle cx="23" cy="112" r="7.2"/><circle cx="38" cy="112" r="7.2"/><circle cx="53" cy="112" r="7.2"/><circle cx="68" cy="112" r="7.2"/><circle cx="83" cy="112" r="7.2"/><circle cx="98" cy="112" r="7.2"/><circle cx="113" cy="112" r="7.2"/><circle cx="128" cy="112" r="7.2"/><circle cx="143" cy="112" r="7.2"/>
+    <div class="d" style="font-weight:900;font-size:44px;letter-spacing:0.04em;line-height:0.92;">Data</div>
+    <svg viewBox="0 0 200 200" width="70%" style="margin:4px auto;flex:1;min-height:0;display:block;" preserveAspectRatio="xMidYMid meet">
+      <g transform="translate(100,100)">
+        <line x1="0" y1="-95" x2="0" y2="95" stroke="#000" stroke-width="5" transform="rotate(0)"/><line x1="0" y1="-95" x2="0" y2="95" stroke="#000" stroke-width="4" transform="rotate(12)"/><line x1="0" y1="-88" x2="0" y2="88" stroke="#000" stroke-width="3.2" transform="rotate(24)"/><line x1="0" y1="-78" x2="0" y2="78" stroke="#000" stroke-width="2.5" transform="rotate(36)"/><line x1="0" y1="-68" x2="0" y2="68" stroke="#000" stroke-width="2" transform="rotate(48)"/><line x1="0" y1="-60" x2="0" y2="60" stroke="#000" stroke-width="1.5" transform="rotate(60)"/><line x1="0" y1="-55" x2="0" y2="55" stroke="#000" stroke-width="1.2" transform="rotate(72)"/><line x1="0" y1="-52" x2="0" y2="52" stroke="#000" stroke-width="1" transform="rotate(84)"/>
+        <line x1="0" y1="-95" x2="0" y2="95" stroke="#000" stroke-width="5" transform="rotate(90)"/><line x1="0" y1="-95" x2="0" y2="95" stroke="#000" stroke-width="4" transform="rotate(102)"/><line x1="0" y1="-88" x2="0" y2="88" stroke="#000" stroke-width="3.2" transform="rotate(114)"/><line x1="0" y1="-78" x2="0" y2="78" stroke="#000" stroke-width="2.5" transform="rotate(126)"/><line x1="0" y1="-68" x2="0" y2="68" stroke="#000" stroke-width="2" transform="rotate(138)"/><line x1="0" y1="-60" x2="0" y2="60" stroke="#000" stroke-width="1.5" transform="rotate(150)"/><line x1="0" y1="-55" x2="0" y2="55" stroke="#000" stroke-width="1.2" transform="rotate(162)"/><line x1="0" y1="-52" x2="0" y2="52" stroke="#000" stroke-width="1" transform="rotate(174)"/>
+        <circle cx="0" cy="0" r="14" fill="#000"/>
       </g>
     </svg>
-    <div class="m" style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;line-height:1.55;">CUSTOMER<br>RESEARCH<br>AGENT</div>
-    <div class="t" style="font-size:9px;line-height:1.5;opacity:0.5;margin-top:4px;">an LLM agent that digs through markets so investors can sleep at night</div>
+    <div class="m" style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;line-height:1.55;">PREDICT<br>EMOTIONS<br>BEHAVIOUR</div>
+    <div class="t" style="font-size:9px;line-height:1.5;opacity:0.5;margin-top:4px;">turning data into insight so investors manage wealth with clarity</div>
     <div style="display:inline-block;background:#000;color:#fff;padding:3px 10px;font-family:'PM';font-size:9px;font-weight:700;letter-spacing:0.05em;margin-top:5px;align-self:flex-start;">FULL STACK</div>
     <div class="mic" style="opacity:0.3;margin-top:6px;">5 years · 80%+ satisfaction</div>
   </div>
@@ -588,9 +583,9 @@ function track(res) {
     <div class="m" style="font-weight:700;font-size:11px;letter-spacing:0.08em;opacity:0.4;text-transform:uppercase;">Mar 2020 – Sep 2025</div>
     <div class="d" style="font-weight:900;font-size:34px;letter-spacing:-0.02em;line-height:0.95;margin:6px 0 3px;">deep data</div>
     <div class="m" style="font-weight:700;font-size:12px;letter-spacing:0.04em;opacity:0.55;">SENIOR DATA SCIENTIST</div>
-    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Built an LLM-powered customer research agent for investors. Designed the full UX flow from input to insight. Sentiment analysis model beat conventional approach by ~20%. Achieved 80%+ user satisfaction in PoC.</div>
+    <div class="t" style="font-size:16px;line-height:1.6;margin:14px 0;opacity:0.75;">Built data pipelines that predict investor emotions and behaviour. Transformed raw market signals into actionable insight. Sentiment analysis model beat conventional approach by ~20%. Achieved 80%+ user satisfaction in PoC.</div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;">
-      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">LLM Agents</span>
+      <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Data Science</span>
       <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">FastAPI</span>
       <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">Next.js</span>
       <span style="background:#000;color:#fff;padding:3px 9px;font-family:'PT';font-size:10px;font-weight:700;border-radius:10px;">PyTorch</span>
