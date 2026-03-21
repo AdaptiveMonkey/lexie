@@ -263,11 +263,6 @@
     }
     .card.expandable:hover{
       transform:none;
-      height:auto!important;
-      min-height:0!important;
-      align-self:start;
-      z-index:200;
-      box-shadow:0 12px 40px rgba(0,0,0,0.15);
     }
     .card.expandable .card-poster{
       height:120px; /* compress to banner height */
@@ -286,19 +281,18 @@
       transform:none;
       pointer-events:auto;
     }
-    .card.expandable:hover .card-detail,
-    .card.expandable.open .card-detail{
-      max-height:500px;
-      opacity:1;
-      padding:12px 14px 14px;
-      border-left:none;
-    }
     .card.expandable.open{
       height:auto!important;
       min-height:0!important;
       align-self:start;
       z-index:200;
       box-shadow:0 12px 40px rgba(0,0,0,0.15);
+    }
+    .card.expandable.open .card-detail{
+      max-height:500px;
+      opacity:1;
+      padding:12px 14px 14px;
+      border-left:none;
     }
     .card.expandable.open .card-poster{
       display:flex!important;
@@ -335,7 +329,6 @@
     .card.expandable .card-poster{
       height:100px;
     }
-    .card.expandable:hover,
     .card.expandable.open{
       height:auto!important;
       min-height:0!important;
