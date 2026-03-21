@@ -321,6 +321,38 @@
       display:flex!important;
     }
     .topnav{padding-left:15px;}
+    /* globe card on tablet — collapsed: small preview; expanded: full globe */
+    #globeCard{
+      overflow:hidden!important;
+      transition:height 0.4s ease;
+    }
+    #globeCard .globe-wrap{
+      width:80px!important;height:80px!important;
+      transition:width 0.4s ease, height 0.4s ease;
+    }
+    #globeCard canvas{
+      width:80px!important;height:80px!important;
+      transition:width 0.4s ease, height 0.4s ease;
+    }
+    #globeCard .text-ring{
+      display:none;
+      transition:opacity 0.3s ease;
+    }
+    /* expanded state */
+    #globeCard.globe-open{
+      height:280px!important;
+      z-index:200;
+    }
+    #globeCard.globe-open .globe-wrap{
+      width:190px!important;height:190px!important;
+    }
+    #globeCard.globe-open canvas{
+      width:190px!important;height:190px!important;
+    }
+    #globeCard.globe-open .text-ring{
+      display:block;
+      inset:-24px;
+    }
   }
 
   /* ═══ SLOGAN CIRCLE (in-card) ═══ */
@@ -390,6 +422,19 @@
       opacity:1;
       padding:12px 14px 14px;
       border-left:none;border-top:none;
+    }
+    /* globe card on phone — inherits tablet rules above */
+    #globeCard.globe-open{
+      height:300px!important;
+      margin-left:0!important;margin-right:0!important;
+      transform:none!important;
+      margin-bottom:8px;
+    }
+    #globeCard.globe-open .globe-wrap{
+      width:200px!important;height:200px!important;
+    }
+    #globeCard.globe-open canvas{
+      width:200px!important;height:200px!important;
     }
     /* footer: no card styling on mobile */
     #footer{
@@ -964,8 +1009,8 @@ function track(res) {
 </div>
 
 <!-- ═══ 17. GLOBE ═══ -->
-<div class="card" style="grid-column:5/9;grid-row:25/30;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;background:#000;position:relative;">
-  <div class="globe-wrap" style="position:relative;width:200px;height:200px;">
+<div id="globeCard" class="card" style="grid-column:5/9;grid-row:25/30;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;background:#000;position:relative;">
+  <div class="globe-wrap" style="position:relative;width:200px;height:200px;touch-action:none;">
     <svg class="text-ring" viewBox="0 0 300 300" style="position:absolute;inset:-25px;pointer-events:none;">
       <defs><path id="circlePath" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/></defs>
       <text><textPath href="#circlePath" style="font-family:system-ui,sans-serif;font-size:13px;font-weight:800;fill:#fff;letter-spacing:3px;text-transform:uppercase;">AROUND THE WORLD · AROUND THE WORLD · </textPath></text>
@@ -1073,6 +1118,12 @@ function track(res) {
         }
         return;
       }
+      // globe card: toggle expand on mobile
+      if(this.id === 'globeCard'){
+        e.stopPropagation();
+        this.classList.toggle('globe-open');
+        return;
+      }
       // expandable cards: toggle open/close on tap
       if(this.classList.contains('expandable')){
         e.stopPropagation();
@@ -1150,14 +1201,18 @@ function track(res) {
   });
   window.addEventListener('mouseup', () => { isDragging=false; wrap.style.cursor='grab'; });
 
+  let touchMoved = false;
   wrap.addEventListener('touchstart', e => {
-    isDragging=true; lastX=e.touches[0].clientX; dragVelocity=0;
-  }, {passive:true});
-  window.addEventListener('touchmove', e => {
+    isDragging=true; touchMoved=false; lastX=e.touches[0].clientX; dragVelocity=0;
+    e.preventDefault(); e.stopPropagation();
+  }, {passive:false});
+  wrap.addEventListener('touchmove', e => {
     if(!isDragging) return;
+    touchMoved=true;
+    e.preventDefault(); e.stopPropagation();
     const dx=e.touches[0].clientX-lastX; dragVelocity=dx*0.008; rotation+=dragVelocity; lastX=e.touches[0].clientX;
-  }, {passive:true});
-  window.addEventListener('touchend', () => { isDragging=false; });
+  }, {passive:false});
+  wrap.addEventListener('touchend', e => { isDragging=false; if(touchMoved) e.stopPropagation(); });
 
   function draw(){
     ctx.clearRect(0,0,W,H);
